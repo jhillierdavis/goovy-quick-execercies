@@ -1,0 +1,36 @@
+apply plugin: 'groovy'
+
+group = "com.jhdit"
+version = "0.1"
+description = "An awesome groovy library"
+
+repositories {
+    jcenter()
+}
+
+sourceSets {
+    main.groovy.srcDir 'src'
+    test.groovy.srcDir 'test'
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.5.0'
+    testCompile group: 'org.spockframework', name: 'spock-core', version: '1.1-groovy-2.4' // https://mvnrepository.com/artifact/org.spockframework/spock-core
+
+    /**
+     * Support for mocking of static & final classes
+     */
+    // testCompile group: 'cglib', name: 'cglib-nodep', version: '3.2.5' // https://mvnrepository.com/artifact/cglib/cglib-nodep
+    testCompile group: 'net.bytebuddy', name: 'byte-buddy', version: '1.8.12' // https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy
+    testCompile group: 'org.objenesis', name: 'objenesis', version: '2.6' // https://mvnrepository.com/artifact/org.objenesis/objenesis
+}
+
+test {
+    // Always run tests, even when nothing changed.
+    dependsOn 'cleanTest'
+
+    // Show test results.
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
