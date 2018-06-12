@@ -1,11 +1,7 @@
 apply plugin: 'groovy'
 
-group = "com.jhdit"
-version = "0.1"
-description = "An awesome groovy library"
-
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 sourceSets {
